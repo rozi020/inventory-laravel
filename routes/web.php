@@ -10,9 +10,10 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::resource('fakultas','FakultasController');
 
-Route::get('fakultas', ['as' => 'fakultas.index', 'uses' => 'FakultasController@index']);
+Route::resource('jurusan','JurusanController');
 
-Route::get('/', function () {
-    return view('fakultas.index');
-});
+
+
+

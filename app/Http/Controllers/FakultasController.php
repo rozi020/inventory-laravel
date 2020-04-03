@@ -16,11 +16,11 @@ class FakultasController extends Controller
     {
         //pagination
         // numbering
-        $data = Fakultas::when($request->search, function($query) use($request){
+        $fakultas = Fakultas::when($request->search, function($query) use($request){
             $query->where('name', 'LIKE', '%'.$request->search);
-        })->get();
+        })->paginate(5);
 
-        return view('fakultas.index', compact('data'));
+        return view('fakultas.index', compact('fakultas'));
     }
 
     /**
@@ -30,7 +30,8 @@ class FakultasController extends Controller
      */
     public function create()
     {
-        //
+        
+        return view('fakultas.create');
     }
 
     /**
@@ -41,7 +42,17 @@ class FakultasController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request,[
+            'name' => 'required'
+        ]);
+ 
+           $fakultas = new Fakultas;
+           $fakultas->name = $request->name;
+           $fakultas->save();
+
+
+ 
+        return redirect('fakultas');
     }
 
     /**
@@ -63,7 +74,8 @@ class FakultasController extends Controller
      */
     public function edit($id)
     {
-        //
+        $fakultas = Fakultas::find($id);
+       return view('fakultas.edit', ['fakultas' => $fakultas]);
     }
 
     /**
@@ -75,7 +87,17 @@ class FakultasController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->validate($request,[
+           'name' => 'required',
+
+        ]);
+
+        $id_fakultas = $request['id'];
+        $update = Fakultas::where('id',$id)->first();
+        $update->name = $request['name'];
+        $update->update();
+        
+        return redirect('fakultas');
     }
 
     /**
@@ -86,6 +108,8 @@ class FakultasController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $fakultas = Fakultas::find($id);
+        $fakultas->delete();
+        return redirect('/fakultas');
     }
 }
