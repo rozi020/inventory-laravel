@@ -10,10 +10,32 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::resource('fakultas','FakultasController');
+Auth::routes();
 
-Route::resource('jurusan','JurusanController');
+Route::get('signout', ['as' => 'auth.signout', 'uses' => 'Auth\loginController@signout']);
+
+// Route::group(['middleware' => 'auth'], function(){
+
+		Route::resource('fakultas','FakultasController');
+
+		Route::resource('jurusan','JurusanController');
+
+		Route::resource('ruangan','RuanganController');
+
+		Route::resource('barang','BarangController');
+		
+
+
+// });
+
+		Route::get('dashboard', function () {
+	    return view('dashboard.dashboard_index');
+		});
 
 
 
+
+
+?>
+		
 
