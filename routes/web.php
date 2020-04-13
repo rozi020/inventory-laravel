@@ -23,6 +23,10 @@ Route::get('signout', ['as' => 'auth.signout', 'uses' => 'Auth\loginController@s
 		Route::resource('ruangan','RuanganController');
 
 		Route::resource('barang','BarangController');
+
+		Route::get('exportjurusan', 'JurusanController@export');
+
+		Route::get('exportbarang', 'BarangController@export');
 		
 
 

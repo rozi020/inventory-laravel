@@ -28,6 +28,12 @@
               <button type="button" class="btn btn-primary">Add New</button>
             </a>
           </div>
+          <form action="/exportbarang" method="get">
+              <button type="submit" class="btn btn-success">
+                <i class="fas fa-file-excel"></i> &nbsp; Export Excel
+              </button>
+          </form>
+          </div>
           <div class="card-body">
             <table class="table table-bordered">
               <thead>
