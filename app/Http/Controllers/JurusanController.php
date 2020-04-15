@@ -22,9 +22,12 @@ class JurusanController extends Controller
             $query->where('name', 'LIKE', '%'.$request->search.'%')
                   ->orwhere('nama_jurusan', 'LIKE', '%'.$request->search.'%');
         })->join('fakultas', 'fakultas.id', '=', 'jurusan.id_fakultas')
+        ->orderBy('id_jurusan','desc')
         ->paginate(5);
 
-        return view('jurusan.jurusan_index', compact('jurusan'))->with('i', (request()->input('page', 1) - 1) * 10);
+        $jurusan->appends($request->only('search'));
+
+        return view('jurusan.jurusan_index', compact('jurusan'));
     }
 
     /**

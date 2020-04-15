@@ -14,7 +14,7 @@ Auth::routes();
 
 Route::get('signout', ['as' => 'auth.signout', 'uses' => 'Auth\loginController@signout']);
 
-// Route::group(['middleware' => 'auth'], function(){
+Route::group(['middleware' => 'auth'], function(){
 
 		Route::resource('fakultas','FakultasController');
 
@@ -24,17 +24,21 @@ Route::get('signout', ['as' => 'auth.signout', 'uses' => 'Auth\loginController@s
 
 		Route::resource('barang','BarangController');
 
+		Route::get('dashboard', function () {
+	    return view('dashboard.dashboard_index');
+		});
+
+		Route::get('', function () {
+	    return view('dashboard.dashboard_index');
+		});
+
 		Route::get('exportjurusan', 'JurusanController@export');
 
 		Route::get('exportbarang', 'BarangController@export');
 		
 
 
-// });
-
-		Route::get('dashboard', function () {
-	    return view('dashboard.dashboard_index');
-		});
+});
 
 
 

@@ -40,15 +40,15 @@
               </thead>
               <tbody>
                  <?php $no = 1; ?>
-               @forelse($ruangan as $ruangan)
+               @forelse($ruangan as $ru)
                 <tr>
                   <td>{{ $no++ }}</td>
-                  <td>{{ $ruangan->jurusan->nama_jurusan }}</td>
-                  <td>{{ $ruangan->nama_ruangan }}</td>
+                  <td>{{ $ru->jurusan->nama_jurusan }}</td>
+                  <td>{{ $ru->nama_ruangan }}</td>
                   <td>
-                    <form action="{{ route('ruangan.destroy', $ruangan->id_ruangan) }}" method="POST">
+                    <form action="{{ route('ruangan.destroy', $ru->id_ruangan) }}" method="POST">
                         <div class="btn-group">
-                            <a class="btn btn-sm btn-warning edit_modal color" href="{{ route('ruangan.edit', $ruangan->id_ruangan) }}"><i class="fas fa-pen"></i></a>
+                            <a class="btn btn-sm btn-warning edit_modal color" href="{{ route('ruangan.edit', $ru->id_ruangan) }}"><i class="fas fa-pen"></i></a>
                             @csrf
                             @method('DELETE')
                             <button type="submit" class="btn btn-sm btn-danger delete color" onclick="return confirm('Are you sure to delete this data ?');"><i class="fas fa-trash"></i></button>
@@ -63,6 +63,7 @@
                 @endforelse
               </tbody>
             </table>
+            {!! $ruangan->links() !!}
           </div>
           <div class="card-footer text-right">
             <nav class="d-inline-block">

@@ -2,8 +2,7 @@
 
 use Illuminate\Database\Seeder;
 
-
-class FakultasSeeder extends Seeder
+class RuanganSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -12,6 +11,6 @@ class FakultasSeeder extends Seeder
      */
     public function run()
     {
-          Factory(App\Fakultas::class,10)->create();
+        Factory(App\Ruangan::class,10)->create();
     }
 }

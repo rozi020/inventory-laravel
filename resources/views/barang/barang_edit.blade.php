@@ -49,6 +49,10 @@
               </div>
 
               <div class="form-group">
+                  <input type="hidden" name="updated_by" value="{{auth()->user()->id_user}}" class="form-control">
+              </div>
+
+              <div class="form-group">
                 <button type="submit" class="btn btn-primary">SAVE</button>
               </div>
               </form>

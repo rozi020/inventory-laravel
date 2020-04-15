@@ -23,16 +23,21 @@
               <button type="button" class="btn btn-info">All Data</button>
             </a>
           </div>
+           @if(auth()->user()->role == 'admin')
           <div class="card-header">
             <a href="{{route('barang.create')}}">
               <button type="button" class="btn btn-primary">Add New</button>
             </a>
           </div>
+          @endif
+
           <form action="/exportbarang" method="get">
               <button type="submit" class="btn btn-success">
                 <i class="fas fa-file-excel"></i> &nbsp; Export Excel
               </button>
           </form>
+
+          
           </div>
           <div class="card-body">
             <table class="table table-bordered">
@@ -50,22 +55,37 @@
               </thead>
               <tbody>
                  <?php $no = 1; ?>
-               @forelse($barang as $barang)
+               @forelse($barang as $bar)
                 <tr>
                   <td>{{ $no++ }}</td>
-                  <td>{{ $barang->nama_barang }}</td>
-                  <td>{{ $barang->ruangan->nama_ruangan }}</td>
-                  <td>{{ $barang->total }}</td>
-                  <td>{{ $barang->broken }}</td>
-                  <td>{{ $barang->created_by }}</td>
-                  <td>{{ $barang->updated_by }}</td>
+                  <td>{{ $bar->nama_barang }}</td>
+                  <td>{{ $bar->ruangan->nama_ruangan }}</td>
+                  <td>{{ $bar->total }}</td>
+                  <td>{{ $bar->broken }}</td>
+
+
+                   <td>@foreach($user as $u)
+                        @if($u->id_user == $bar->created_by)
+                          {{ $u->name }}
+                        @endif
+                      @endforeach
+                  </td>
+                  <td>@foreach($user as $u)
+                        @if($u->id_user == $bar->updated_by)
+                          {{ $u->name }}
+                        @endif
+                      @endforeach
+                  </td>
                   <td>
-                    <form action="{{ route('barang.destroy', $barang->id_barang) }}" method="POST">
+
+                    <form action="{{ route('barang.destroy', $bar->id_barang) }}" method="POST">
                         <div class="btn-group">
-                            <a class="btn btn-sm btn-warning edit_modal color" href="{{ route('barang.edit', $barang->id_barang) }}"><i class="fas fa-pen"></i></a>
+                            <a class="btn btn-sm btn-warning edit_modal color" href="{{ route('barang.edit', $bar->id_barang) }}"><i class="fas fa-pen"></i></a>
                             @csrf
                             @method('DELETE')
+                            @if(auth()->user()->role == 'admin')
                             <button type="submit" class="btn btn-sm btn-danger delete color" onclick="return confirm('Are you sure to delete this data ?');"><i class="fas fa-trash"></i></button>
+                            @endif
                         </div>
                     </form>
                   </td>
@@ -77,6 +97,7 @@
                 @endforelse
               </tbody>
             </table>
+            {!! $barang->links() !!}
           </div>
           <div class="card-footer text-right">
             <nav class="d-inline-block">

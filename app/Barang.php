@@ -17,4 +17,8 @@ class Barang extends Model
     	return $this->belongsTo('App\Ruangan','ruangan_id','id_ruangan');
     }
 
+    public function users(){
+    	return $this->belongsTo('App\User','created_by','id');
+    }
+
 }

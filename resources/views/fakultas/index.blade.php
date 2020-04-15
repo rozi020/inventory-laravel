@@ -61,13 +61,14 @@
                 @endforelse
               </tbody>
             </table>
+      {{ $fakultas->links() }}
           </div>
           <div class="card-footer text-right">
             <nav class="d-inline-block">
               
             </nav>
 
-            {{ $fakultas->links() }}
+            
 
           </div>
         </div>

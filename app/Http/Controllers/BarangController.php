@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Barang;
 use App\Ruangan;
+use App\User;
 use App\Exports\BarangExport;
 use Maatwebsite\Excel\Facades\Excel;
 
@@ -23,7 +24,9 @@ class BarangController extends Controller
         })->join('ruangan', 'ruangan.id_ruangan', '=', 'barang.ruangan_id')
         ->paginate(5);
 
-        return view('barang.barang_index', compact('barang'))->with('i', (request()->input('page', 1) - 1) * 10);  
+        $user = User::all();
+
+        return view('barang.barang_index', compact('barang','user'))->with('i', (request()->input('page', 1) - 1) * 10);  
     }
 
     /**
@@ -34,8 +37,8 @@ class BarangController extends Controller
     public function create()
     {
         $data = Ruangan::all();
-        // $user = User::all();
-        return view('barang.barang_create', compact('data'));
+        $user = User::all();
+        return view('barang.barang_create', compact('data','user'));
     }
 
     /**
@@ -51,6 +54,7 @@ class BarangController extends Controller
             'nama_barang' => 'required',
             'total'=>'required',
             'broken'=>'required',
+            'created_by'=>'required',
             
         ]);
 
@@ -59,6 +63,7 @@ class BarangController extends Controller
             'nama_barang' => $request->nama_barang,
             'total' => $request->total,
             'broken' => $request->broken,
+            'created_by' => $request->created_by,
             
         ]);
 
@@ -87,7 +92,8 @@ class BarangController extends Controller
     {
         $ruangan = Ruangan::all();
         $barang = Barang::findOrFail($id);
-        return view('barang.barang_edit', compact('barang','ruangan'));
+        $user = User::all();
+        return view('barang.barang_edit', compact('barang','user','ruangan'));
     }
 
     /**
@@ -104,6 +110,8 @@ class BarangController extends Controller
             'nama_barang' => $request->nama_barang,
             'total' => $request->total,
             'broken' => $request->broken,
+            'created_by' => $request->created_by,
+            'updated_by' => $request->updated_by
             
         );
         barang::where('id_barang',$id)->update($form_data);
