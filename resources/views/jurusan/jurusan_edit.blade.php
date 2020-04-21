@@ -23,6 +23,18 @@
             <form action="{{ route('jurusan.update', ['jurusan' => $jurusan->id_jurusan]) }}" method="POST" enctype="multipart/form-data">
               <input type="hidden" name="_method" value="PUT">
               @csrf
+
+               @if($errors->any())
+                <div class="alert alert-danger">
+                  <ul>
+                    @foreach ($errors->all() as $error)
+                    <li>{{$error}}</li>
+                    @endforeach
+                  </ul>
+                  
+                </div>
+                @endif
+                
                <div class="form-group">
                   <label for="id_fakultas" class="control-label">Fakultas</label>
                     <select class="form-control" name="id_fakultas">

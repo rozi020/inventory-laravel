@@ -21,6 +21,17 @@
             <form action="{{ route('barang.store') }}" method="POST" enctype="multipart/form-data">
               @csrf
 
+              @if($errors->any())
+                <div class="alert alert-danger">
+                  <ul>
+                    @foreach ($errors->all() as $error)
+                    <li>{{$error}}</li>
+                    @endforeach
+                  </ul>
+                  
+                </div>
+                @endif
+
               <div class="form-group">
                 <label>Name</label>
                 <input type="text" name="nama_barang" class="form-control">
@@ -42,6 +53,17 @@
                 <label>Broken</label>
                 <input type="text" name="broken" class="form-control">
               </div>
+
+              <div class="input-group mb-3">
+                          <div class="input-group-prepend">
+                              <span class="input-group-text" id="inputGroupFileAddon01">Upload</span>
+                            </div>
+                            <div class="custom-file">
+                              <input id="file-upload" type="file" name="image">
+                              <label class="custom-file-label" label for="file-upload" id="file-drag">Choose file</label>
+                            </div>
+                          </div>
+
                <div class="form-group">
                   <input type="hidden" name="created_by" value="{{auth()->user()->id_user}}" class="form-control">
               </div>

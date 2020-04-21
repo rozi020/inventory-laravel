@@ -24,13 +24,9 @@ Route::group(['middleware' => 'auth'], function(){
 
 		Route::resource('barang','BarangController');
 
-		Route::get('dashboard', function () {
-	    return view('dashboard.dashboard_index');
-		});
+		Route::get('dashboard', 'DashboardController@index');
 
-		Route::get('', function () {
-	    return view('dashboard.dashboard_index');
-		});
+		Route::get('dashboard', 'DashboardController@hitungtable');
 
 		Route::get('exportjurusan', 'JurusanController@export');
 

@@ -48,6 +48,7 @@
                   <th scope="col">Ruangan</th>
                   <th scope="col">Total</th>
                   <th scope="col">Broken</th>
+                  <th scope="col">Image</th>
                   <th scope="col">Crated By</th>
                   <th scope="col">Updated By</th>
                   <th scope="col">Action</th>
@@ -62,6 +63,7 @@
                   <td>{{ $bar->ruangan->nama_ruangan }}</td>
                   <td>{{ $bar->total }}</td>
                   <td>{{ $bar->broken }}</td>
+                  <td> <img src="{{ url('image/'.$bar->image) }}" width="40px"> </td>
 
 
                    <td>@foreach($user as $u)

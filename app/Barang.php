@@ -10,7 +10,7 @@ class Barang extends Model
 
      protected $table = 'barang';
 
-     protected $fillable = ['ruangan_id','nama_barang','total','broken','created_by','updated_by'];
+     protected $fillable = ['ruangan_id','nama_barang','total','broken','image','created_by','updated_by'];
 
      public function ruangan(){
 

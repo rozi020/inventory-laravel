@@ -8,6 +8,8 @@ use App\Ruangan;
 use App\User;
 use App\Exports\BarangExport;
 use Maatwebsite\Excel\Facades\Excel;
+use Illuminate\Support\Facades\File;
+
 
 class BarangController extends Controller
 {
@@ -49,20 +51,26 @@ class BarangController extends Controller
      */
     public function store(Request $request)
     {
-        $this->validate($request, [
-            'ruangan_id'=>'required',
-            'nama_barang' => 'required',
-            'total'=>'required',
-            'broken'=>'required',
-            'created_by'=>'required',
-            
+       $this->validate($request, [
+            'image' => 'required|image|mimes:jpeg,png,jpg|max:2048',
         ]);
+     
+        // menyimpan data file yang diupload ke variabel $file
+        $file = $request->file('image');
+     
+        $nama_file = time()."_".$file->getClientOriginalName();
+     
+        // isi dengan nama folder tempat kemana file diupload
+        $tujuan_upload = 'image';
+        $file->move($tujuan_upload,$nama_file);
+
 
         barang::create([
             'ruangan_id' => $request->ruangan_id,
             'nama_barang' => $request->nama_barang,
             'total' => $request->total,
             'broken' => $request->broken,
+            'image' => $nama_file,
             'created_by' => $request->created_by,
             
         ]);
@@ -105,16 +113,42 @@ class BarangController extends Controller
      */
     public function update(Request $request, $id)
     {
+
+        $nama_file = $request->hidden_image;
+        $file = $request->file('image');
+
+        if ($file !='') {
+                $this->validate($request, [
+                'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            ]);
+                $nama_file = time()."_".$file->getClientOriginalName();
+                $tujuan_upload = 'image';
+                $file->move($tujuan_upload,$nama_file);
+        }else{
+            $request->validate([
+            'ruangan_id'=>'required',
+            'nama_barang' => 'required',
+            'total'=>'required',
+            'broken'=>'required',
+            'created_by'=>'required',
+            ]);
+        }
+
         $form_data = array(
             'ruangan_id' => $request->ruangan_id,
             'nama_barang' => $request->nama_barang,
             'total' => $request->total,
             'broken' => $request->broken,
+            'image' => $nama_file,
             'created_by' => $request->created_by,
             'updated_by' => $request->updated_by
             
         );
+
+
+
         barang::where('id_barang',$id)->update($form_data);
+
         return redirect('/barang');
     }
 

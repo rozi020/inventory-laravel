@@ -20,6 +20,18 @@
           <div class="card-body">
             <form action="{{ route('jurusan.store') }}" method="POST" enctype="multipart/form-data">
               @csrf
+
+               @if($errors->any())
+                <div class="alert alert-danger">
+                  <ul>
+                    @foreach ($errors->all() as $error)
+                    <li>{{$error}}</li>
+                    @endforeach
+                  </ul>
+                  
+                </div>
+                @endif
+                
               <div class="form-group">
                     <label for="id_fakultas" class="control-label">Fakultas</label>
                     <select class="form-control" name="id_fakultas">

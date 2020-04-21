@@ -7,6 +7,8 @@ use Faker\Generator as Faker;
 
 $factory->define(Barang::class, function (Faker $faker) {
 
+$faker->addProvider(new \Mmo\Faker\PicsumProvider($faker));
+
 	$list_barang = [
         	'AC',
         	'Proyektor',
@@ -20,6 +22,7 @@ $factory->define(Barang::class, function (Faker $faker) {
         'nama_barang' => $faker->randomElement($list_barang),
         'total' => $faker->numberBetween($min = 1, $max = 5),
         'broken' => $faker->numberBetween($min = 0, $max = 3),
+        'image' => $faker->picsum('public/image',400, 400, false),
         'created_by' => 1
     ];
 });

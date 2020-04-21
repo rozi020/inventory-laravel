@@ -6,6 +6,7 @@ use App\Jurusan;
 use Faker\Generator as Faker;
 
 $factory->define(Jurusan::class, function (Faker $faker) {
+	
 
 	$list_jurusan = [
 			'Perhotelan',
