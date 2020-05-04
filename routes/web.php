@@ -36,6 +36,8 @@ Route::group(['middleware' => 'auth'], function(){
 
 });
 
+Route::get('dummy', 'EmailController@send');
+
 
 
 
