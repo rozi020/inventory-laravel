@@ -54,15 +54,14 @@
                 <input type="text" name="broken" class="form-control">
               </div>
 
-              <div class="input-group mb-3">
-                          <div class="input-group-prepend">
-                              <span class="input-group-text" id="inputGroupFileAddon01">Upload</span>
-                            </div>
-                            <div class="custom-file">
-                              <input id="file-upload" type="file" name="image">
-                              <label class="custom-file-label" label for="file-upload" id="file-drag">Choose file</label>
-                            </div>
-                          </div>
+                <div class="form-group">
+                <label>Upload Image</label>
+                      <div class="custom-file">
+                        <input id="file-upload" type="file" name="image">
+                       <label class="custom-file-label" label for="file-upload" id="file-drag">Choose file</label>
+                      </div>
+                 </div>
+                        
 
                <div class="form-group">
                   <input type="hidden" name="created_by" value="{{auth()->user()->id_user}}" class="form-control">

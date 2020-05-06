@@ -24,9 +24,8 @@
             </a>
           </div>
           <div class="card-header">
-            <a href="{{route('fakultas.create')}}">
               <button type="button" class="btn btn-primary">Add New</button>
-            </a>
+              <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">Import Data</button>
           </div>
           <div class="card-body">
             <table class="table table-bordered">
@@ -76,4 +75,36 @@
   </div>
 
 </section>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <form action="{{ url('/importfakultas') }}" method="post" enctype="multipart/form-data">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Form Import Data</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+{{ csrf_field() }}
+        
+        <div class="form-group">
+                <label>Import Data</label>
+                      <div class="custom-file">
+                        <input id="file-upload" type="file" name="file">
+                       <label class="custom-file-label" label for="file-upload" id="file-drag">Choose file</label>
+                      </div>
+                 </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="submit" class="btn btn-primary">Import</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
 @endsection()

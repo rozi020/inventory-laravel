@@ -31,11 +31,14 @@ Route::group(['middleware' => 'auth'], function(){
 		Route::get('exportjurusan', 'JurusanController@export');
 
 		Route::get('exportbarang', 'BarangController@export');
+
+
 		
 
 
 });
 
+Route::post('importfakultas', 'FakultasController@import');
 Route::get('dummy', 'EmailController@send');
 
 
