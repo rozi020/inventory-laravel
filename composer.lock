@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "3367f054337fb26e2f47d8a8922fceec",
+    "content-hash": "6be3d1d474cb35eddb95794b28d45479",
     "packages": [
         {
             "name": "bluemmb/faker-picsum-photos-provider",
@@ -1850,6 +1850,52 @@
                 "uuid"
             ],
             "time": "2020-02-21T04:36:14+00:00"
+        },
+        {
+            "name": "silviolleite/laravelpwa",
+            "version": "2.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/silviolleite/laravel-pwa.git",
+                "reference": "6c07e71ea87e7ec9fb00f56355ea589b723e3ede"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/silviolleite/laravel-pwa/zipball/6c07e71ea87e7ec9fb00f56355ea589b723e3ede",
+                "reference": "6c07e71ea87e7ec9fb00f56355ea589b723e3ede",
+                "shasum": ""
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "LaravelPWA\\Providers\\LaravelPWAServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "LaravelPWA\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Silvio Luis Leite",
+                    "email": "silviolleite@gmail.com"
+                }
+            ],
+            "description": "Looks like an app, feels like an app, but NOT an app.",
+            "keywords": [
+                "laravel",
+                "php",
+                "progressive web apps",
+                "pwa"
+            ],
+            "time": "2020-04-24T18:22:30+00:00"
         },
         {
             "name": "swiftmailer/swiftmailer",

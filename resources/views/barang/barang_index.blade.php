@@ -79,15 +79,14 @@
                       @endforeach
                   </td>
                   <td>
-
                     <form action="{{ route('barang.destroy', $bar->id_barang) }}" method="POST">
                         <div class="btn-group">
                             <a class="btn btn-sm btn-warning edit_modal color" href="{{ route('barang.edit', $bar->id_barang) }}"><i class="fas fa-pen"></i></a>
                             @csrf
                             @method('DELETE')
-                            @if(auth()->user()->role == 'admin')
+                            
                             <button type="submit" class="btn btn-sm btn-danger delete color" onclick="return confirm('Are you sure to delete this data ?');"><i class="fas fa-trash"></i></button>
-                            @endif
+
                         </div>
                     </form>
                   </td>

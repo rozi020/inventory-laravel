@@ -26,21 +26,23 @@ Route::group(['middleware' => 'auth'], function(){
 
 		Route::get('dashboard', 'DashboardController@index');
 
+		Route::get('home', 'DashboardController@index');
+
 		Route::get('dashboard', 'DashboardController@hitungtable');
 
 		Route::get('exportjurusan', 'JurusanController@export');
 
 		Route::get('exportbarang', 'BarangController@export');
 
-
-		
-
-
 });
 
 Route::post('importfakultas', 'FakultasController@import');
+
 Route::get('dummy', 'EmailController@send');
 
+Route::get('/','landingpageController@index');
+
+Route::get('landingpage','landingpageController@index');
 
 
 
