@@ -24,7 +24,9 @@
             </a>
           </div>
           <div class="card-header">
+            <a href="{{ route('fakultas.create') }}" class="pull-right">
               <button type="button" class="btn btn-primary">Add New</button>
+            </a>
               <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">Import Data</button>
           </div>
           <div class="card-body">
