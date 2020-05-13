@@ -21,7 +21,7 @@ class RuanganController extends Controller
         })->join('jurusan', 'jurusan.id_jurusan', '=', 'ruangan.jurusan_id')
         ->paginate(5);
 
-        return view('ruangan.ruangan_index', compact('ruangan'))->with('i', (request()->input('page', 1) - 1) * 10);   
+        return view('ruangan.ruangan_index', compact('ruangan'))->with('i', (request()->input('page', 1) - 1) * 5);   
     }
 
     /**

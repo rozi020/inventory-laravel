@@ -28,7 +28,7 @@ class BarangController extends Controller
 
         $user = User::all();
 
-        return view('barang.barang_index', compact('barang','user'))->with('i', (request()->input('page', 1) - 1) * 10);  
+        return view('barang.barang_index', compact('barang','user'))->with('i', (request()->input('page', 1) - 1) * 5);  
     }
 
     /**

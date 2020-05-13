@@ -44,10 +44,10 @@
                 </tr>
               </thead>
               <tbody>
-                 <?php $no = 1; ?>
+                 
                @forelse($jurusan as $jur)
                 <tr>
-                  <td>{{ $no++ }}</td>
+                  <td>{{ ++$i }}</td>
                   <td>{{ $jur->fakultas->name }}</td>
                   <td>{{ $jur->nama_jurusan }}</td>
                   <td>

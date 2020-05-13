@@ -39,10 +39,10 @@
                 </tr>
               </thead>
               <tbody>
-                 <?php $no = 1; ?>
+                 
                @forelse($ruangan as $ru)
                 <tr>
-                  <td>{{ $no++ }}</td>
+                  <td>{{ ++$i }}</td>
                   <td>{{ $ru->jurusan->nama_jurusan }}</td>
                   <td>{{ $ru->nama_ruangan }}</td>
                   <td>

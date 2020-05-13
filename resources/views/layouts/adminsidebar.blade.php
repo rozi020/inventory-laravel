@@ -1,10 +1,10 @@
 <div class="main-sidebar">
         <aside id="sidebar-wrapper">
           <div class="sidebar-brand">
-            <a href="index.html">Bernd</a>
+            <a href="dashboard">Bernd</a>
           </div>
           <div class="sidebar-brand sidebar-brand-sm">
-            <a href="index.html">Be</a>
+            <a href="dashboard">Be</a>
           </div>
           <ul class="sidebar-menu">
               @if(auth()->user()->role == 'admin')
@@ -20,10 +20,22 @@
                 <li class="">
                   <a class="nav-link" href="{{ route('ruangan.index') }}"><i class="far fa-square"></i> <span>Ruangan</span></a>
                 </li>
-              @endif
               <li class="">
                 <a class="nav-link" href="{{ route('barang.index') }}"><i class="fas fa-gift"></i> <span>Barang</span></a>
               </li>
+              @endif
+
+              @if(auth()->user()->role == 'staff')
+
+              <li class="">
+                  <a class="nav-link" href="{{url('dashboard')}}"><i class="fas fa-square"></i> <span>Dashboard</span></a>
+                </li>
+
+              <li class="">
+                <a class="nav-link" href="{{ route('barang.index') }}"><i class="fas fa-gift"></i> <span>Barang</span></a>
+              </li>
+              @endif
+
           </ul>
         </aside>
       </div>

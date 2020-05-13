@@ -55,10 +55,10 @@
                 </tr>
               </thead>
               <tbody>
-                 <?php $no = 1; ?>
+                
                @forelse($barang as $bar)
                 <tr>
-                  <td>{{ $no++ }}</td>
+                  <td>{{ ++$i }}</td>
                   <td>{{ $bar->nama_barang }}</td>
                   <td>{{ $bar->ruangan->nama_ruangan }}</td>
                   <td>{{ $bar->total }}</td>
@@ -84,9 +84,9 @@
                             <a class="btn btn-sm btn-warning edit_modal color" href="{{ route('barang.edit', $bar->id_barang) }}"><i class="fas fa-pen"></i></a>
                             @csrf
                             @method('DELETE')
-                            
+                            @if(auth()->user()->role == 'admin')
                             <button type="submit" class="btn btn-sm btn-danger delete color" onclick="return confirm('Are you sure to delete this data ?');"><i class="fas fa-trash"></i></button>
-
+                            @endif
                         </div>
                     </form>
                   </td>

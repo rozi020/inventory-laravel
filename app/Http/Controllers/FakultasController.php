@@ -22,7 +22,7 @@ class FakultasController extends Controller
             $query->where('name', 'LIKE', '%'.$request->search);
         })->paginate(5);
 
-        return view('fakultas.index', compact('fakultas'));
+        return view('fakultas.index', compact('fakultas'))->with('i', (request()->input('page', 1) - 1) * 5);
     }
 
     /**

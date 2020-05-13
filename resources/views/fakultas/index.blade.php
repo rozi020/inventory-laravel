@@ -37,10 +37,10 @@
                 </tr>
               </thead>
               <tbody>
-              <?php $no = 1; ?>
+              
                @forelse($fakultas as $f)
                 <tr>
-                  <td>{{ $no++ }}</td>
+                  <td>{{ ++$i }}</td>
                   <td>{{ $f->name }}</td>
                   <td>
                     <form action="{{ route('fakultas.destroy', $f->id) }}" method="POST">

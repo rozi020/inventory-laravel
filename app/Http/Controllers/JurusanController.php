@@ -27,7 +27,7 @@ class JurusanController extends Controller
 
         $jurusan->appends($request->only('search'));
 
-        return view('jurusan.jurusan_index', compact('jurusan'));
+        return view('jurusan.jurusan_index', compact('jurusan'))->with('i', (request()->input('page', 1) - 1) * 5);
     }
 
     /**
